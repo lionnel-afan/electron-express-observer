@@ -9,8 +9,9 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="../styles/css/custom-style.css" />
   <link rel="stylesheet" href="../styles/css/extra-style.css" />
-  <!-- <script src="../scripts/jquery/dist/jquery.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="../scripts/jquery/dist/jquery.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 </head>
 
@@ -35,8 +36,11 @@
     <br>
 
     <div class="logged-users-wrapper ">
-      <div class="logged-users">
+      <p  ng-hide="connectedUsers.length > 0" class="text-m">No one is connected here yet...</p>
+
+      <div ng-show="connectedUsers.length > 0" class="logged-users">
         <div class="user" ng-repeat="user in connectedUsers">
+          <i class="status"></i>
           <span>{{user.login}}</span>
           <span>{{user.ip}}</span>
         </div>
@@ -47,10 +51,7 @@
 </body>
 
 <script src="../scripts/angular.min.js"></script>
-
-<!-- <script type="text/javascript" src="./server-entry.js"></script> -->
-<!-- <script type="text/javascript" src="../scripts/angular.min.js" /> -->
-
+ 
 
 <script>
   var app = angular.module("obsSuperServer", []);
@@ -61,7 +62,7 @@
 
     $scope.connectedUsers = [];
 
-    $scope.message = "Welcome to the super server";
+    $scope.message = "Welcome to the observatory";
     $scope.serverStarted = false;
 
 
