@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Electron-With-Express</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/css/custom-style.css" />
+  <link rel="stylesheet" href="../styles/css/extra-style.css" />
+  <!-- <script src="../scripts/jquery/dist/jquery.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body ng-app="obsSuperServer">
+  <script type="text/javascript" src="./server-entry.js"></script>
+
+  <div ng-controller="singleController">
+    <div id="loadingContainer" class="loading-v2">
+      <input type="checkbox" ng-model="serverStarted" id="loadingInputItem" />
+      <label for="logoInputItem">
+        <div class="pulsers">
+          <div class="pulser"></div>
+          <div class="pulser"></div>
+          <div class="pulser"></div>
+          <div class="pulser"></div>
+          <div class="pulser"></div>
+        </div>
+      </label>
+      <div id="loading-text-box" class="loading-text"> {{ message }} </div>
+    </div>
+
+    <br>
+
+    <div class="logged-users-wrapper ">
+      <div class="logged-users">
+        <div class="user" ng-repeat="user in connectedUsers">
+          <span>{{user.login}}</span>
+          <span>{{user.ip}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="../scripts/angular.min.js"></script>
+
+<!-- <script type="text/javascript" src="./server-entry.js"></script> -->
+<!-- <script type="text/javascript" src="../scripts/angular.min.js" /> -->
+
+
+<script>
+  var app = angular.module("obsSuperServer", []);
+  app.controller("singleController", function ($scope) {
+
+    var electron = require('electron').remote;
+    var { app, BrowserWindow, ipcMain } = electron;
+
+    $scope.connectedUsers = [];
+
+    $scope.message = "Welcome to the super server";
+    $scope.serverStarted = false;
+
+
+    // Listen for async server started message from main process
+    ipcMain.on("server-started", (event, arg) => {
+      $scope.serverStarted = true;
+      $scope.$apply();
+    });
+
+    ipcMain.on("user-connected", (event, arg) => {
+      $scope.connectedUsers = arg;
+      $scope.$apply();
+    });
+
+
+  });
+
+</script>
+
+
+</html>
