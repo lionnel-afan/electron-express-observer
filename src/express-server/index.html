@@ -35,8 +35,11 @@
     <br>
 
     <div class="logged-users-wrapper ">
-      <div class="logged-users">
+      <p  ng-hide="connectedUsers.length > 0" class="text-m">No one is connected here yet...</p>
+
+      <div ng-show="connectedUsers.length > 0" class="logged-users">
         <div class="user" ng-repeat="user in connectedUsers">
+          <i class="status"></i>
           <span>{{user.login}}</span>
           <span>{{user.ip}}</span>
         </div>
@@ -61,7 +64,7 @@
 
     $scope.connectedUsers = [];
 
-    $scope.message = "Welcome to the super server";
+    $scope.message = "Welcome to the observatory";
     $scope.serverStarted = false;
 
 
