@@ -14,8 +14,8 @@ electron.app.on("window-all-closed", function() {
 
 electron.app.on("ready", function() {
   serverWindow = new electron.BrowserWindow({
-    width: 500,
-    height: 750,
+    width: 400,
+    height: 700,
     frame: true,
     show: true
   });

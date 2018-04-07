@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Observer](./public/screenshot.png)
+![Observer](./public/screenshot2.png)
 </div>
 
 ## What does it do?
