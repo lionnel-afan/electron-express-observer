@@ -23,7 +23,7 @@ There are __3 main Actions__ - the authentication request, a users list request 
 
 The __authentication request__. It provides an endpoint for
 __authenticating and initiating the session__ and then returns a list of currently connected users. Simply send an http post to
-* http://__oberser address__:8080/oberser/api/__login__
+* http://__oberser address__:8080/observer/api/__login__
 
 using  :
 
