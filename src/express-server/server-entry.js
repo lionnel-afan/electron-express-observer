@@ -22,10 +22,9 @@ var port = process.env.PORT || 8080; // set our port
 
 function GetID() {
   return (
-    "_" +
     Math.random()
       .toString(36)
-      .substr(2, 9)
+      .substr(2, 19)
   );
 }
 
@@ -49,7 +48,8 @@ function getClientIp(req) {
   if (ipAddress.substr(0, 7) == "::ffff:") {
     ipAddress = ipAddress.substr(7);
   }
-  return ipAddress;
+
+  return  ipAddress == "::1" ? "localhost" : ipAddress;
 }
 
 // ROUTES FOR OUR API
@@ -66,7 +66,7 @@ router.get("/", function(req, res) {
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use("/atlas/api", router);
+app.use("/observer/api", router);
 
 app.use((err, request, response, next) => {
   // log the error, for now just console.log
