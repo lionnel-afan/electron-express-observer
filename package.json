@@ -53,7 +53,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-phantomjs-shim": "^1.4.0",
     "lazypipe": "^1.0.1",
-    "lodash": "~3.10.1",
+    "lodash": "~4.17.13",
     "main-bower-files": "~2.9.0",
     "phantomjs-prebuilt": "^2.1.14",
     "uglify-save-license": "^0.4.1"
@@ -96,7 +96,7 @@
     "gulp-symdest": "^1.1.0",
     "gulp-sync": "^0.1.4",
     "jquery": "^3.2.1",
-    "lodash": "~3.10.1",
+    "lodash": "~4.17.13",
     "lru-cache": "^4.1.2",
     "wiredep": "^4.0.0"
   },
